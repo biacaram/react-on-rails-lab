@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from "axios";
 
+import TodoItems from "./TodoItems";
+import TodoItem from "./TodoItem";
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +28,13 @@ class TodoApp extends React.Component {
       });
   }
   render() {
-    return <p>TodoApp</p>
+    return (
+      <TodoItems>
+        {this.state.todoItems.map(todoItem => (
+          <TodoItem key={todoItem.id} todoItem={todoItem} />
+        ))}
+      </TodoItems>
+    );
   }
 }
 
